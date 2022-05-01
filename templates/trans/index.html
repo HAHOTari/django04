@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block con %}
+<h1>번역!</h1>
+<table border="1">
+    <tr>
+        <th>번역 전</th>
+        <th></th>
+        <th>번역 후</th>
+    </tr>
+    <tr>
+        <form method="post">
+            {% csrf_token %}
+            <td>
+                <textarea cols="60" rows="8" name="sou">{{s}}</textarea>
+            <th>
+                <select name="lan1">
+                    <option>번역 전</option>
+                    <option value="ko" {% if lan1 == "ko" %} selected {% endif %}>한국어</option>
+                    <option value="en" {% if lan1 == "en" %} selected {% endif %}>영어</option>
+                    <option value="ja" {% if lan1 == "ja" %} selected {% endif %}>일본어</option>
+                    <option value="es" {% if lan1 == "es" %} selected {% endif %}>스페인어</option>
+                    <option value="de" {% if lan1 == "de" %} selected {% endif %}>독일어</option>
+                </select><br>
+                <button>번역</button><br>
+                <select name="lan2">
+                    <option>번역 후</option>
+                    <option value="ko" {% if lan2 == "ko" %} selected {% endif %}>한국어</option>
+                    <option value="en" {% if lan2 == "en" %} selected {% endif %}>영어</option>
+                    <option value="ja" {% if lan2 == "ja" %} selected {% endif %}>일본어</option>
+                    <option value="es" {% if lan2 == "es" %} selected {% endif %}>스페인어</option>
+                    <option value="de" {% if lan2 == "de" %} selected {% endif %}>독일어</option>
+                </select>
+            </th>
+            </td>
+        </form>
+        </td>
+        <td><textarea cols="60" rows="8" disabled>{{ d }}</textarea></td>
+    </tr>
+</table>
+
+
+{% endblock %}

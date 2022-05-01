@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block con %}
+
+    {% load mathfilters %}
+    <h1>VOTE DETAIL PAGE</h1>
+    <h2><b>{{ t.subject }}</b></h2>
+
+    <img src="{{ t.maker.getpic }}" width="300px">
+    <br> <b>{{ t.maker }}</b> <br> {{ t.pubdate }} <br>
+    <br>
+    <textarea cols="70" rows="3" disabled>{{ t.content }}</textarea><br><br>
+
+    {% if user in t.voter.all %}
+        {% for i in cset %}
+            <b>{{ i.name }}</b>투표율 : {{ i.num|div:t.voter.count|mul:100 }} %<br><br>
+        {% endfor %}
+    {% else %}
+        <form method="post" action="{% url 'vote:vote' t.id %}">
+            {% csrf_token %}
+            {% for i in cset %}
+                <input type="radio" name="cho" value="{{ i.id }}" >{{ i.name }}<br>
+            {% endfor %}
+            <button>투표</button>
+        </form>
+    {% endif %}
+    <a href="{% url 'vote:index' %}"><button>홈</button></a>
+{% endblock %}

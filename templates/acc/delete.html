@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block con %}
+<h1>계정 삭제 페이지</h1>
+<form method="post">
+    {% csrf_token %}
+    PASSWORD 확인 <input type="password" name="upass"><br><br>
+    <button>삭제</button>
+</form>
+{% endblock %}

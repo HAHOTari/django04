@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block con %}
+<h1>VOTE PAGE</h1>
+<h2><b>투표소</b></h2>
+
+<a href="{% url 'vote:create' %}"><button>투표 생성</button></a>
+
+<ul>
+    {% for i in tset %}
+    <li><a href="{% url 'vote:detail' i.id %}">{{ i.subject }} {% if user in i.voter.all %} 👌 {% endif %}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block con %}
+    <br>
+    <h1><b>게시글 수정 페이지</b></h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" value="{{ b.subject }}" name="sub"><br><br>
+        <textarea cols="80" rows="8" name="con">{{ b.content }}</textarea>
+        <button>글 수정</button>
+    </form>
+
+{% endblock %}

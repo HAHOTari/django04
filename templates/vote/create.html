@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block con %}
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" size="30" name="sub" placeholder="투표 주제"><br><br>
+    <textarea cols="40" rows="5" name="con" placeholder="투표 설명"></textarea><br><br>
+    <div id="here"></div>
+
+    <hr>
+    
+    <button type="button" onclick="make_choice()">선택지 생성</button>
+    <button>투표 생성</button>
+</form>
+
+    <script>
+        function make_choice(){
+            d = document.getElementById("here");
+            n = document.createElement("div");
+            n.innerHTML = "보기 <input type='text' name='chname'> <br>";
+            d.appendChild(n);
+        }
+    </script>
+
+{% endblock %}
